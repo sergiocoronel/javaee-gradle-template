@@ -1,0 +1,18 @@
+apply plugin: 'war'
+
+dependencies {
+	providedCompile project(':javaee-gradle-template-ejb')
+	providedCompile group: 'javax', name: 'javaee-web-api', version: '8.0'
+	
+	compile 'org.primefaces:primefaces:6.1'
+	compile 'org.omnifaces:omnifaces:2.6.5'
+
+	//Others
+	compile 'commons-beanutils:commons-beanutils:1.9.3'
+	compile 'javax.servlet.jsp.jstl:jstl:1.2'
+	compile 'com.lowagie:itext:2.1.7'
+	compile 'org.primefaces.themes:redmond:1.0.10'
+	compile 'org.apache.taglibs:taglibs-standard-impl:1.2.5'
+	compile 'org.primefaces.themes:start:1.0.10'
+	
+}

@@ -1,0 +1,33 @@
+apply plugin: 'eclipse'
+
+//Default Tasks
+defaultTasks 'clean', 'assemble', 'deployLocal'
+
+//Modificar estos valores según el equipo
+def wildflyVersion = '10.1.0.Final'
+def wildflyFolder = '/srv/wildfly-10.1.0.Final'
+
+//Los archivos generados tienen la version como posfijo
+def versionStr = rootProject.file('version.txt').text.trim()
+
+allprojects {
+	
+	repositories {
+	    jcenter()
+	    mavenCentral()
+	    // Primefaces theme repository
+	    maven { url 'http://repository.primefaces.org' }
+	}
+	
+	dependencies {
+		
+	}
+	
+} 
+
+//Copy .ear to server
+task deployLocal(type: Copy){
+	from "ear/build/libs/javaee-gradle-template-ear-${versionStr}.ear"
+	into "${wildflyFolder}/standalone/deployments"
+}
+

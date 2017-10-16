@@ -1,0 +1,31 @@
+apply plugin: 'ear'
+apply plugin: 'java'
+
+//Add version
+version = rootProject.file('version.txt').text.trim()
+
+dependencies {
+	//Add ejb-jar and war
+	deploy project(':javaee-gradle-template-ejb')
+	deploy project(path: ':javaee-gradle-template-web', configuration: 'archives')
+	//Add ejb-jar dependencies to lib folder
+	earlib project(path: ':javaee-gradle-template-ejb', configuration: 'compile')
+}
+
+sourceCompatibility = '1.8'
+
+//application.xml
+ear {
+	    appDirName 'src/main/app'  // use application metadata found in this folder
+	    // put dependent libraries into lib inside the generated EAR
+	    libDirName 'lib'
+	    deploymentDescriptor {  // custom entries for application.xml:
+	        fileName = "application.xml"  // same as the default value
+	        version = "7"  // same as the default value
+	        applicationName = "javaee-gradle-template"
+	        initializeInOrder = true
+	        displayName = "javaee-gradle-template"  // defaults to project.name
+	        // defaults to project.description if not set
+	        description = "Description"
+	    }
+}
