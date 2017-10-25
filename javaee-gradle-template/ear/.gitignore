@@ -1,1 +1,7 @@
 /build/
+/bin/
+# Eclipse files
+.settings/
+.recommenders/
+.project
+.classpath

@@ -1,7 +1,8 @@
 apply plugin: 'eclipse'
 
 //Default Tasks
-defaultTasks 'clean', 'assemble', 'deployLocal'
+defaultTasks 'clean', 'assemble' 
+//, 'deployLocal'
 
 //Modificar estos valores según el equipo
 def wildflyVersion = '10.1.0.Final'
